@@ -1,11 +1,14 @@
 
+
 <!DOCTYPE html>
 <html lang="ht">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10243e">
+  <link rel="manifest" href="./manifest.json">
   <title>GREATDEAL PROFESSIONNEL</title>
+
   <style>
     * { box-sizing: border-box; }
     body {
@@ -48,6 +51,7 @@
     footer { padding: 25px; font-size: 12px; color: #667; }
   </style>
 </head>
+
 <body>
   <header>
     <h1>GREATDEAL PROFESSIONNEL</h1>
@@ -97,6 +101,13 @@
       installPrompt = null;
       installBtn.hidden = true;
     });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .catch(error => console.error("Service Worker:", error));
+      });
+    }
   </script>
 </body>
 </html>
