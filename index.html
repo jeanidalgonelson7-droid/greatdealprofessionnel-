@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243e">
+  <title>GREATDEAL PROFESSIONNEL</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #10243e;
+      text-align: center;
+    }
+    header {
+      background: #10243e;
+      color: white;
+      padding: 24px 15px;
+      border-bottom: 4px solid #d5a52c;
+    }
+    h1 { font-size: 23px; margin: 0 0 8px; }
+    header p { margin: 0; font-size: 14px; }
+    main { padding: 35px 18px; }
+    .panel {
+      max-width: 480px;
+      margin: auto;
+      padding: 25px 18px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 15px #00000012;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      border: 0;
+      border-radius: 8px;
+      background: #1769aa;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    button.install { background: #d5a52c; color: #10243e; }
+    footer { padding: 25px; font-size: 12px; color: #667; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GREATDEAL PROFESSIONNEL</h1>
+    <p>Tout pwofesyonèl serye e konpetan yo, yon sèl kote !</p>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h2>Byenveni sou platfòm nou an</h2>
+      <p>Jwenn ak jere pwofesyonèl ki serye ak konpetan.</p>
+
+      <button onclick="ouvrirDashboard()">
+        Antre nan aplikasyon an
+      </button>
+
+      <button id="installBtn" class="install" hidden>
+        Enstale aplikasyon an
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 GREATDEAL PROFESSIONNEL
+  </footer>
+
+  <script>
+    const dashboardURL =
+      "https://script.google.com/macros/s/AKfycbx7XEPXWyXvx_Ffp_6Y3_SleeQYHJSU40OnV284lzdizmjO6s-tEBFu5KbmvnDIn4Io/exec?page=dashboard";
+
+    function ouvrirDashboard() {
+      window.location.href = dashboardURL;
+    }
+
+    let installPrompt;
+    const installBtn = document.getElementById("installBtn");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      installPrompt = event;
+      installBtn.hidden = false;
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!installPrompt) return;
+      installPrompt.prompt();
+      await installPrompt.userChoice;
+      installPrompt = null;
+      installBtn.hidden = true;
+    });
+  </script>
+</body>
+</html>
