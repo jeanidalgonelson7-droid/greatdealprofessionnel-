@@ -1,0 +1,12 @@
+
+{
+  "name": "GREATDEAL PROFESSIONNEL",
+  "short_name": "GREATDEAL",
+  "description": "Tout pwofesyonèl serye e konpetan yo, yon sèl kote !",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f6fa",
+  "theme_color": "#10243e"
+}
