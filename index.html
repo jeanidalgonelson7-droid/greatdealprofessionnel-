@@ -446,22 +446,33 @@
 
     // ENSTALE APLIKASYON AN
 
-    async function installerApplication() {
-      if (!deferredPrompt) {
-        alert("Aplikasyon an deja enstale oswa navigatè a pa ofri enstalasyon an.");
-        return;
-      }
+    
+async function installerApplication() {
 
-      deferredPrompt.prompt();
+  if (deferredPrompt) {
 
-      const result = await deferredPrompt.userChoice;
+    deferredPrompt.prompt();
 
-      if (result.outcome === "accepted") {
-        document.getElementById("installButton").style.display = "none";
-      }
+    const result = await deferredPrompt.userChoice;
 
-      deferredPrompt = null;
+    if (result.outcome === "accepted") {
+      document.getElementById("installButton").style.display = "none";
     }
+
+    deferredPrompt = null;
+
+  } else {
+
+    alert(
+      "Pou enstale GREATDEAL PROFESSIONNEL:\n\n" +
+      "1. Peze twa ti pwen yo nan Chrome.\n" +
+      "2. Chèche Install app oswa Add to Home screen.\n" +
+      "3. Swiv enstriksyon yo."
+    );
+
+  }
+}
+
 
     // KACHE BOUTON ENSTALASYON SI APP LA DEJA ENSTALE
 
